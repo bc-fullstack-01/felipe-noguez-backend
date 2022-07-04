@@ -1,16 +1,11 @@
-const http = require('http')
+const express = require('express')
+const app = express()
 
-const server = http.createServer((req, res) => {
-    if (req.url ==='/') {
+app.get('/', function (req, res) {
         console.log(req.headers)
-        res.write('Hello from server')
+        res.write('Hello from express-server')
         res.end()
-    }
 });
 
-server.on('connection', (stream) => {
-    console.log('Some one connected')
-})
-
-server.listen(4000);
+app.listen(4000);
 console.log('server listen on http://localhost:4000')
